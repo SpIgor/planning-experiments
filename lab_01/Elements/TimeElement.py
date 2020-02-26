@@ -5,7 +5,6 @@ class TimeElement:
         self.param1 = param1
         self.param2 = param2
         self.__total_time = 0
-        self.__remaining_time = 0
 
     @property
     def total_time(self):
@@ -15,15 +14,8 @@ class TimeElement:
     def total_time(self, value):
         self.__total_time = value
 
-    @property
-    def remaining_time(self):
-        return self.__remaining_time
-
-    @remaining_time.setter
-    def remaining_time(self, value):
-        self.__remaining_time = value
-
+    # TODO подумать как сокрыть метод в дочерних классах
     def generate_delay(self):
-        self.remaining_time = self.rand_func(
+        self.total_time += self.rand_func(
             self.param1, self.param2)
-        self.total_time += self.remaining_time
+        return self.total_time
