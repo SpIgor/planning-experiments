@@ -8,9 +8,11 @@ class ModellingController:
     def get_min_time_el_index(lst):
         min_time = lst[0].total_time
         min_index = 0
-        for i in range(len(lst)):
-            if lst[i].total_time < min_time:
-                min_time = lst[i].total_time
+        for i, elem in enumerate(lst):
+            if elem.total_time < min_time:
+                if isinstance(elem, Processor) and elem.queue.counter <= 0:
+                    continue
+                min_time = elem.total_time
                 min_index = i
 
         return min_time, min_index
@@ -33,21 +35,15 @@ class ModellingController:
     def start_modelling(self):
         lst = [self.gen, self.proc]
         current_time = 0
-        # current_time = self.gen.generate_element()
-        # self.proc.total_time = current_time
-        # self.proc.start_processing()
-        # print('generator total time = {}\nprocessor total time = {}\n'
-        #       'current modelling time = {}'.format(self.gen.total_time, self.proc.total_time, current_time))
 
         while current_time < self.modelling_time:
             current_time, index = self.get_min_time_el_index(lst)
             if isinstance(lst[index], Generator):
-                print('generator')
                 lst[index].generate_element()
             if isinstance(lst[index], Processor):
-                print('processor')
                 lst[index].process_next()
 
-        print(self.gen.generated)
-        print(self.proc.processed)
-        return 'hello, world\n'
+        gen_intense = self.gen.generated / self.gen.total_time
+        oa_intense = self.proc.processed / self.proc.total_time
+
+        return gen_intense, oa_intense

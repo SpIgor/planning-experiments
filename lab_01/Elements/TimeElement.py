@@ -14,7 +14,6 @@ class TimeElement:
     def total_time(self, value):
         self.__total_time = value
 
-    # TODO подумать как сокрыть метод в дочерних классах
     def generate_delay(self):
         self.total_time += self.rand_func(
             self.param1, self.param2)
