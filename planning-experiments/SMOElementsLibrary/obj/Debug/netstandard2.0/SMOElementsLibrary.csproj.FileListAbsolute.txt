@@ -1,0 +1,8 @@
+/home/igor/git/planning-experiments/planning-experiments/SMOElementsLibrary/bin/Debug/netstandard2.0/SMOElementsLibrary.deps.json
+/home/igor/git/planning-experiments/planning-experiments/SMOElementsLibrary/bin/Debug/netstandard2.0/SMOElementsLibrary.dll
+/home/igor/git/planning-experiments/planning-experiments/SMOElementsLibrary/bin/Debug/netstandard2.0/SMOElementsLibrary.pdb
+/home/igor/git/planning-experiments/planning-experiments/SMOElementsLibrary/obj/Debug/netstandard2.0/SMOElementsLibrary.csprojAssemblyReference.cache
+/home/igor/git/planning-experiments/planning-experiments/SMOElementsLibrary/obj/Debug/netstandard2.0/SMOElementsLibrary.AssemblyInfoInputs.cache
+/home/igor/git/planning-experiments/planning-experiments/SMOElementsLibrary/obj/Debug/netstandard2.0/SMOElementsLibrary.AssemblyInfo.cs
+/home/igor/git/planning-experiments/planning-experiments/SMOElementsLibrary/obj/Debug/netstandard2.0/SMOElementsLibrary.dll
+/home/igor/git/planning-experiments/planning-experiments/SMOElementsLibrary/obj/Debug/netstandard2.0/SMOElementsLibrary.pdb

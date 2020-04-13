@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{875F0B63-C353-44CA-A97F-EA3E4B2072AF}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GUI/MainWindow.cs">
+    <Files>
+      <File FileName="ExperimentsLibrary/FExperiment.cs" Line="23" Column="45" />
+      <File FileName="ExperimentsLibrary/PlotGenerator.cs" Line="6" Column="29" />
+      <File FileName="GUI/MainWindow.cs" Line="21" Column="20" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="planning-experiments" expanded="True">
+            <Node name="ExperimentsLibrary" expanded="True" />
+            <Node name="GUI" expanded="True">
+              <Node name="MainWindow.cs" selected="True" />
+            </Node>
+            <Node name="SMOElementsLibrary" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.GUI PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
