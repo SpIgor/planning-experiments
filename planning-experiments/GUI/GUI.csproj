@@ -70,9 +70,9 @@
       <Project>{515EC0EC-97C1-49A2-977C-32FB5EBA1556}</Project>
       <Name>ExperimentsLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SMOElementsLibrary\SMOElementsLibrary.csproj">
-      <Project>{B9B223F4-4854-482D-B9A4-3197927CAD95}</Project>
-      <Name>SMOElementsLibrary</Name>
+    <ProjectReference Include="..\TimeElementsLibrary\TimeElementsLibrary.csproj">
+      <Project>{96EE3A21-4853-4259-BB1C-E9CA0647E2B3}</Project>
+      <Name>TimeElementsLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

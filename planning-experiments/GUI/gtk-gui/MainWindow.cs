@@ -17,11 +17,11 @@ public partial class MainWindow
 
 	private global::Gtk.RadioButton GeneratorSigmaRBtn;
 
+	private global::Gtk.SpinButton GenIntense;
+
 	private global::Gtk.RadioButton GenIntenseRBtn;
 
-	private global::Gtk.SpinButton GenIntenseSBtn;
-
-	private global::Gtk.SpinButton GenSigmaSBtn;
+	private global::Gtk.SpinButton GenSigma;
 
 	private global::Gtk.Label GeneratorLabel;
 
@@ -35,9 +35,9 @@ public partial class MainWindow
 
 	private global::Gtk.Label label2;
 
-	private global::Gtk.SpinButton ProcDSBtn;
+	private global::Gtk.SpinButton ProcIntense;
 
-	private global::Gtk.SpinButton ProcMSBtn;
+	private global::Gtk.SpinButton ProcSigma;
 
 	private global::Gtk.Label ProcessorLabel;
 
@@ -57,19 +57,11 @@ public partial class MainWindow
 
 	private global::Gtk.Table table4;
 
-	private global::Gtk.SpinButton FirstGenMaxIntense;
-
-	private global::Gtk.SpinButton FirstGenMinIntense;
-
-	private global::Gtk.Label label10;
-
 	private global::Gtk.Label label11;
 
 	private global::Gtk.Label label12;
 
 	private global::Gtk.Label label5;
-
-	private global::Gtk.Label label6;
 
 	private global::Gtk.Label label7;
 
@@ -77,17 +69,17 @@ public partial class MainWindow
 
 	private global::Gtk.Label label9;
 
-	private global::Gtk.SpinButton ProcMaxD;
+	private global::Gtk.SpinButton MaxGenIntense;
 
-	private global::Gtk.SpinButton ProcMaxM;
+	private global::Gtk.SpinButton MaxProcIntense;
 
-	private global::Gtk.SpinButton ProcMinD;
+	private global::Gtk.SpinButton MaxProcSigma;
 
-	private global::Gtk.SpinButton ProcMinM;
+	private global::Gtk.SpinButton MinGenIntense;
 
-	private global::Gtk.SpinButton SecondGenMaxIntense;
+	private global::Gtk.SpinButton MinProcIntense;
 
-	private global::Gtk.SpinButton SecondGenMinIntense;
+	private global::Gtk.SpinButton MinProcSigma;
 
 	private global::Gtk.ScrolledWindow GtkScrolledWindow;
 
@@ -137,6 +129,23 @@ public partial class MainWindow
 		global::Gtk.Table.TableChild w1 = ((global::Gtk.Table.TableChild)(this.table2[this.GeneratorSigmaRBtn]));
 		w1.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
+		this.GenIntense = new global::Gtk.SpinButton(0D, 100D, 0.1D);
+		this.GenIntense.CanFocus = true;
+		this.GenIntense.Name = "GenIntense";
+		this.GenIntense.Adjustment.PageIncrement = 10D;
+		this.GenIntense.ClimbRate = 1D;
+		this.GenIntense.Digits = ((uint)(3));
+		this.GenIntense.Numeric = true;
+		this.GenIntense.Value = 0.191D;
+		this.table2.Add(this.GenIntense);
+		global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.table2[this.GenIntense]));
+		w2.TopAttach = ((uint)(1));
+		w2.BottomAttach = ((uint)(2));
+		w2.LeftAttach = ((uint)(1));
+		w2.RightAttach = ((uint)(2));
+		w2.XOptions = ((global::Gtk.AttachOptions)(4));
+		w2.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table2.Gtk.Table+TableChild
 		this.GenIntenseRBtn = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Интенсивность"));
 		this.GenIntenseRBtn.CanFocus = true;
 		this.GenIntenseRBtn.Name = "GenIntenseRBtn";
@@ -144,38 +153,21 @@ public partial class MainWindow
 		this.GenIntenseRBtn.UseUnderline = true;
 		this.GenIntenseRBtn.Group = this.GeneratorSigmaRBtn.Group;
 		this.table2.Add(this.GenIntenseRBtn);
-		global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.table2[this.GenIntenseRBtn]));
-		w2.TopAttach = ((uint)(1));
-		w2.BottomAttach = ((uint)(2));
-		w2.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table2.Gtk.Table+TableChild
-		this.GenIntenseSBtn = new global::Gtk.SpinButton(0D, 100D, 0.1D);
-		this.GenIntenseSBtn.CanFocus = true;
-		this.GenIntenseSBtn.Name = "GenIntenseSBtn";
-		this.GenIntenseSBtn.Adjustment.PageIncrement = 10D;
-		this.GenIntenseSBtn.ClimbRate = 1D;
-		this.GenIntenseSBtn.Digits = ((uint)(3));
-		this.GenIntenseSBtn.Numeric = true;
-		this.GenIntenseSBtn.Value = 0.4D;
-		this.table2.Add(this.GenIntenseSBtn);
-		global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.table2[this.GenIntenseSBtn]));
+		global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.table2[this.GenIntenseRBtn]));
 		w3.TopAttach = ((uint)(1));
 		w3.BottomAttach = ((uint)(2));
-		w3.LeftAttach = ((uint)(1));
-		w3.RightAttach = ((uint)(2));
-		w3.XOptions = ((global::Gtk.AttachOptions)(4));
 		w3.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
-		this.GenSigmaSBtn = new global::Gtk.SpinButton(0D, 100D, 1D);
-		this.GenSigmaSBtn.CanFocus = true;
-		this.GenSigmaSBtn.Name = "GenSigmaSBtn";
-		this.GenSigmaSBtn.Adjustment.PageIncrement = 10D;
-		this.GenSigmaSBtn.ClimbRate = 1D;
-		this.GenSigmaSBtn.Digits = ((uint)(3));
-		this.GenSigmaSBtn.Numeric = true;
-		this.GenSigmaSBtn.Value = 10D;
-		this.table2.Add(this.GenSigmaSBtn);
-		global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table2[this.GenSigmaSBtn]));
+		this.GenSigma = new global::Gtk.SpinButton(0D, 100D, 1D);
+		this.GenSigma.CanFocus = true;
+		this.GenSigma.Name = "GenSigma";
+		this.GenSigma.Adjustment.PageIncrement = 10D;
+		this.GenSigma.ClimbRate = 1D;
+		this.GenSigma.Digits = ((uint)(3));
+		this.GenSigma.Numeric = true;
+		this.GenSigma.Value = 10D;
+		this.table2.Add(this.GenSigma);
+		global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table2[this.GenSigma]));
 		w4.LeftAttach = ((uint)(1));
 		w4.RightAttach = ((uint)(2));
 		w4.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -208,7 +200,7 @@ public partial class MainWindow
 		// Container child table3.Gtk.Table+TableChild
 		this.label1 = new global::Gtk.Label();
 		this.label1.Name = "label1";
-		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("Математическое ожидание");
+		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("Интенсивность");
 		this.table3.Add(this.label1);
 		global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table3[this.label1]));
 		w8.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -224,33 +216,33 @@ public partial class MainWindow
 		w9.XOptions = ((global::Gtk.AttachOptions)(4));
 		w9.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table3.Gtk.Table+TableChild
-		this.ProcDSBtn = new global::Gtk.SpinButton(0D, 100D, 1D);
-		this.ProcDSBtn.CanFocus = true;
-		this.ProcDSBtn.Name = "ProcDSBtn";
-		this.ProcDSBtn.Adjustment.PageIncrement = 10D;
-		this.ProcDSBtn.ClimbRate = 1D;
-		this.ProcDSBtn.Digits = ((uint)(3));
-		this.ProcDSBtn.Numeric = true;
-		this.ProcDSBtn.Value = 0.8D;
-		this.table3.Add(this.ProcDSBtn);
-		global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.table3[this.ProcDSBtn]));
-		w10.TopAttach = ((uint)(1));
-		w10.BottomAttach = ((uint)(2));
+		this.ProcIntense = new global::Gtk.SpinButton(0D, 100D, 1D);
+		this.ProcIntense.CanFocus = true;
+		this.ProcIntense.Name = "ProcIntense";
+		this.ProcIntense.Adjustment.PageIncrement = 10D;
+		this.ProcIntense.ClimbRate = 1D;
+		this.ProcIntense.Digits = ((uint)(3));
+		this.ProcIntense.Numeric = true;
+		this.ProcIntense.Value = 0.306D;
+		this.table3.Add(this.ProcIntense);
+		global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.table3[this.ProcIntense]));
 		w10.LeftAttach = ((uint)(1));
 		w10.RightAttach = ((uint)(2));
 		w10.XOptions = ((global::Gtk.AttachOptions)(4));
 		w10.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table3.Gtk.Table+TableChild
-		this.ProcMSBtn = new global::Gtk.SpinButton(0D, 100D, 1D);
-		this.ProcMSBtn.CanFocus = true;
-		this.ProcMSBtn.Name = "ProcMSBtn";
-		this.ProcMSBtn.Adjustment.PageIncrement = 10D;
-		this.ProcMSBtn.ClimbRate = 1D;
-		this.ProcMSBtn.Digits = ((uint)(3));
-		this.ProcMSBtn.Numeric = true;
-		this.ProcMSBtn.Value = 1.35D;
-		this.table3.Add(this.ProcMSBtn);
-		global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.table3[this.ProcMSBtn]));
+		this.ProcSigma = new global::Gtk.SpinButton(0D, 100D, 1D);
+		this.ProcSigma.CanFocus = true;
+		this.ProcSigma.Name = "ProcSigma";
+		this.ProcSigma.Adjustment.PageIncrement = 10D;
+		this.ProcSigma.ClimbRate = 1D;
+		this.ProcSigma.Digits = ((uint)(3));
+		this.ProcSigma.Numeric = true;
+		this.ProcSigma.Value = 0.33D;
+		this.table3.Add(this.ProcSigma);
+		global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.table3[this.ProcSigma]));
+		w11.TopAttach = ((uint)(1));
+		w11.BottomAttach = ((uint)(2));
 		w11.LeftAttach = ((uint)(1));
 		w11.RightAttach = ((uint)(2));
 		w11.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -339,239 +331,185 @@ public partial class MainWindow
 		w21.Expand = false;
 		w21.Fill = false;
 		// Container child vbox6.Gtk.Box+BoxChild
-		this.table4 = new global::Gtk.Table(((uint)(4)), ((uint)(4)), false);
+		this.table4 = new global::Gtk.Table(((uint)(3)), ((uint)(4)), false);
 		this.table4.Name = "table4";
 		this.table4.RowSpacing = ((uint)(6));
 		this.table4.ColumnSpacing = ((uint)(6));
 		// Container child table4.Gtk.Table+TableChild
-		this.FirstGenMaxIntense = new global::Gtk.SpinButton(0D, 100D, 0.1D);
-		this.FirstGenMaxIntense.CanFocus = true;
-		this.FirstGenMaxIntense.Name = "FirstGenMaxIntense";
-		this.FirstGenMaxIntense.Adjustment.PageIncrement = 10D;
-		this.FirstGenMaxIntense.ClimbRate = 1D;
-		this.FirstGenMaxIntense.Digits = ((uint)(3));
-		this.FirstGenMaxIntense.Numeric = true;
-		this.FirstGenMaxIntense.Value = 0.63D;
-		this.table4.Add(this.FirstGenMaxIntense);
-		global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.table4[this.FirstGenMaxIntense]));
-		w22.LeftAttach = ((uint)(3));
-		w22.RightAttach = ((uint)(4));
-		w22.XOptions = ((global::Gtk.AttachOptions)(4));
-		w22.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table4.Gtk.Table+TableChild
-		this.FirstGenMinIntense = new global::Gtk.SpinButton(0D, 100D, 0.1D);
-		this.FirstGenMinIntense.CanFocus = true;
-		this.FirstGenMinIntense.Name = "FirstGenMinIntense";
-		this.FirstGenMinIntense.Adjustment.PageIncrement = 10D;
-		this.FirstGenMinIntense.ClimbRate = 1D;
-		this.FirstGenMinIntense.Digits = ((uint)(3));
-		this.FirstGenMinIntense.Numeric = true;
-		this.FirstGenMinIntense.Value = 0.225D;
-		this.table4.Add(this.FirstGenMinIntense);
-		global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.table4[this.FirstGenMinIntense]));
-		w23.LeftAttach = ((uint)(1));
-		w23.RightAttach = ((uint)(2));
-		w23.XOptions = ((global::Gtk.AttachOptions)(4));
-		w23.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table4.Gtk.Table+TableChild
-		this.label10 = new global::Gtk.Label();
-		this.label10.Name = "label10";
-		this.label10.LabelProp = global::Mono.Unix.Catalog.GetString("максимальная");
-		this.table4.Add(this.label10);
-		global::Gtk.Table.TableChild w24 = ((global::Gtk.Table.TableChild)(this.table4[this.label10]));
-		w24.TopAttach = ((uint)(1));
-		w24.BottomAttach = ((uint)(2));
-		w24.LeftAttach = ((uint)(2));
-		w24.RightAttach = ((uint)(3));
-		w24.XOptions = ((global::Gtk.AttachOptions)(4));
-		w24.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table4.Gtk.Table+TableChild
 		this.label11 = new global::Gtk.Label();
 		this.label11.Name = "label11";
-		this.label11.LabelProp = global::Mono.Unix.Catalog.GetString("максимальное");
+		this.label11.LabelProp = global::Mono.Unix.Catalog.GetString("максимальная");
 		this.table4.Add(this.label11);
-		global::Gtk.Table.TableChild w25 = ((global::Gtk.Table.TableChild)(this.table4[this.label11]));
-		w25.TopAttach = ((uint)(2));
-		w25.BottomAttach = ((uint)(3));
-		w25.LeftAttach = ((uint)(2));
-		w25.RightAttach = ((uint)(3));
-		w25.XOptions = ((global::Gtk.AttachOptions)(4));
-		w25.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.table4[this.label11]));
+		w22.TopAttach = ((uint)(1));
+		w22.BottomAttach = ((uint)(2));
+		w22.LeftAttach = ((uint)(2));
+		w22.RightAttach = ((uint)(3));
+		w22.XOptions = ((global::Gtk.AttachOptions)(4));
+		w22.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table4.Gtk.Table+TableChild
 		this.label12 = new global::Gtk.Label();
 		this.label12.Name = "label12";
 		this.label12.LabelProp = global::Mono.Unix.Catalog.GetString("максимальная");
 		this.table4.Add(this.label12);
-		global::Gtk.Table.TableChild w26 = ((global::Gtk.Table.TableChild)(this.table4[this.label12]));
-		w26.TopAttach = ((uint)(3));
-		w26.BottomAttach = ((uint)(4));
-		w26.LeftAttach = ((uint)(2));
-		w26.RightAttach = ((uint)(3));
-		w26.XOptions = ((global::Gtk.AttachOptions)(4));
-		w26.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.table4[this.label12]));
+		w23.TopAttach = ((uint)(2));
+		w23.BottomAttach = ((uint)(3));
+		w23.LeftAttach = ((uint)(2));
+		w23.RightAttach = ((uint)(3));
+		w23.XOptions = ((global::Gtk.AttachOptions)(4));
+		w23.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table4.Gtk.Table+TableChild
 		this.label5 = new global::Gtk.Label();
 		this.label5.Name = "label5";
-		this.label5.LabelProp = global::Mono.Unix.Catalog.GetString("Интенсивность первого генератора минимальная");
+		this.label5.LabelProp = global::Mono.Unix.Catalog.GetString("Интенсивность генератора минимальная");
 		this.table4.Add(this.label5);
-		global::Gtk.Table.TableChild w27 = ((global::Gtk.Table.TableChild)(this.table4[this.label5]));
-		w27.XOptions = ((global::Gtk.AttachOptions)(4));
-		w27.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table4.Gtk.Table+TableChild
-		this.label6 = new global::Gtk.Label();
-		this.label6.Name = "label6";
-		this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("Интенсивность второго генератора минимальная");
-		this.table4.Add(this.label6);
-		global::Gtk.Table.TableChild w28 = ((global::Gtk.Table.TableChild)(this.table4[this.label6]));
-		w28.TopAttach = ((uint)(1));
-		w28.BottomAttach = ((uint)(2));
-		w28.XOptions = ((global::Gtk.AttachOptions)(4));
-		w28.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w24 = ((global::Gtk.Table.TableChild)(this.table4[this.label5]));
+		w24.XOptions = ((global::Gtk.AttachOptions)(4));
+		w24.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table4.Gtk.Table+TableChild
 		this.label7 = new global::Gtk.Label();
 		this.label7.Name = "label7";
-		this.label7.LabelProp = global::Mono.Unix.Catalog.GetString("Математическое ожидание ОА минимальное");
+		this.label7.LabelProp = global::Mono.Unix.Catalog.GetString("Интенсивность обработчика минимальная");
 		this.table4.Add(this.label7);
-		global::Gtk.Table.TableChild w29 = ((global::Gtk.Table.TableChild)(this.table4[this.label7]));
-		w29.TopAttach = ((uint)(2));
-		w29.BottomAttach = ((uint)(3));
-		w29.XOptions = ((global::Gtk.AttachOptions)(4));
-		w29.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w25 = ((global::Gtk.Table.TableChild)(this.table4[this.label7]));
+		w25.TopAttach = ((uint)(1));
+		w25.BottomAttach = ((uint)(2));
+		w25.XOptions = ((global::Gtk.AttachOptions)(4));
+		w25.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table4.Gtk.Table+TableChild
 		this.label8 = new global::Gtk.Label();
 		this.label8.Name = "label8";
-		this.label8.LabelProp = global::Mono.Unix.Catalog.GetString("Дисперсия ОА минимальная");
+		this.label8.LabelProp = global::Mono.Unix.Catalog.GetString("Дисперсия обработчика минимальная");
 		this.table4.Add(this.label8);
-		global::Gtk.Table.TableChild w30 = ((global::Gtk.Table.TableChild)(this.table4[this.label8]));
-		w30.TopAttach = ((uint)(3));
-		w30.BottomAttach = ((uint)(4));
-		w30.XOptions = ((global::Gtk.AttachOptions)(4));
-		w30.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w26 = ((global::Gtk.Table.TableChild)(this.table4[this.label8]));
+		w26.TopAttach = ((uint)(2));
+		w26.BottomAttach = ((uint)(3));
+		w26.XOptions = ((global::Gtk.AttachOptions)(4));
+		w26.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table4.Gtk.Table+TableChild
 		this.label9 = new global::Gtk.Label();
 		this.label9.Name = "label9";
 		this.label9.LabelProp = global::Mono.Unix.Catalog.GetString("максимальная");
 		this.table4.Add(this.label9);
-		global::Gtk.Table.TableChild w31 = ((global::Gtk.Table.TableChild)(this.table4[this.label9]));
-		w31.LeftAttach = ((uint)(2));
-		w31.RightAttach = ((uint)(3));
+		global::Gtk.Table.TableChild w27 = ((global::Gtk.Table.TableChild)(this.table4[this.label9]));
+		w27.LeftAttach = ((uint)(2));
+		w27.RightAttach = ((uint)(3));
+		w27.XOptions = ((global::Gtk.AttachOptions)(4));
+		w27.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table4.Gtk.Table+TableChild
+		this.MaxGenIntense = new global::Gtk.SpinButton(0D, 100D, 0.1D);
+		this.MaxGenIntense.CanFocus = true;
+		this.MaxGenIntense.Name = "MaxGenIntense";
+		this.MaxGenIntense.Adjustment.PageIncrement = 10D;
+		this.MaxGenIntense.ClimbRate = 1D;
+		this.MaxGenIntense.Digits = ((uint)(3));
+		this.MaxGenIntense.Numeric = true;
+		this.MaxGenIntense.Value = 0.2D;
+		this.table4.Add(this.MaxGenIntense);
+		global::Gtk.Table.TableChild w28 = ((global::Gtk.Table.TableChild)(this.table4[this.MaxGenIntense]));
+		w28.LeftAttach = ((uint)(3));
+		w28.RightAttach = ((uint)(4));
+		w28.XOptions = ((global::Gtk.AttachOptions)(4));
+		w28.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table4.Gtk.Table+TableChild
+		this.MaxProcIntense = new global::Gtk.SpinButton(0D, 100D, 0.1D);
+		this.MaxProcIntense.CanFocus = true;
+		this.MaxProcIntense.Name = "MaxProcIntense";
+		this.MaxProcIntense.Adjustment.PageIncrement = 10D;
+		this.MaxProcIntense.ClimbRate = 1D;
+		this.MaxProcIntense.Digits = ((uint)(3));
+		this.MaxProcIntense.Numeric = true;
+		this.MaxProcIntense.Value = 0.309D;
+		this.table4.Add(this.MaxProcIntense);
+		global::Gtk.Table.TableChild w29 = ((global::Gtk.Table.TableChild)(this.table4[this.MaxProcIntense]));
+		w29.TopAttach = ((uint)(1));
+		w29.BottomAttach = ((uint)(2));
+		w29.LeftAttach = ((uint)(3));
+		w29.RightAttach = ((uint)(4));
+		w29.XOptions = ((global::Gtk.AttachOptions)(4));
+		w29.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table4.Gtk.Table+TableChild
+		this.MaxProcSigma = new global::Gtk.SpinButton(0D, 100D, 0.1D);
+		this.MaxProcSigma.CanFocus = true;
+		this.MaxProcSigma.Name = "MaxProcSigma";
+		this.MaxProcSigma.Adjustment.PageIncrement = 10D;
+		this.MaxProcSigma.ClimbRate = 1D;
+		this.MaxProcSigma.Digits = ((uint)(3));
+		this.MaxProcSigma.Numeric = true;
+		this.MaxProcSigma.Value = 0.35D;
+		this.table4.Add(this.MaxProcSigma);
+		global::Gtk.Table.TableChild w30 = ((global::Gtk.Table.TableChild)(this.table4[this.MaxProcSigma]));
+		w30.TopAttach = ((uint)(2));
+		w30.BottomAttach = ((uint)(3));
+		w30.LeftAttach = ((uint)(3));
+		w30.RightAttach = ((uint)(4));
+		w30.XOptions = ((global::Gtk.AttachOptions)(4));
+		w30.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table4.Gtk.Table+TableChild
+		this.MinGenIntense = new global::Gtk.SpinButton(0D, 100D, 0.1D);
+		this.MinGenIntense.CanFocus = true;
+		this.MinGenIntense.Name = "MinGenIntense";
+		this.MinGenIntense.Adjustment.PageIncrement = 10D;
+		this.MinGenIntense.ClimbRate = 1D;
+		this.MinGenIntense.Digits = ((uint)(3));
+		this.MinGenIntense.Numeric = true;
+		this.MinGenIntense.Value = 0.19D;
+		this.table4.Add(this.MinGenIntense);
+		global::Gtk.Table.TableChild w31 = ((global::Gtk.Table.TableChild)(this.table4[this.MinGenIntense]));
+		w31.LeftAttach = ((uint)(1));
+		w31.RightAttach = ((uint)(2));
 		w31.XOptions = ((global::Gtk.AttachOptions)(4));
 		w31.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table4.Gtk.Table+TableChild
-		this.ProcMaxD = new global::Gtk.SpinButton(0D, 100D, 0.1D);
-		this.ProcMaxD.CanFocus = true;
-		this.ProcMaxD.Name = "ProcMaxD";
-		this.ProcMaxD.Adjustment.PageIncrement = 10D;
-		this.ProcMaxD.ClimbRate = 1D;
-		this.ProcMaxD.Digits = ((uint)(3));
-		this.ProcMaxD.Numeric = true;
-		this.ProcMaxD.Value = 0.9D;
-		this.table4.Add(this.ProcMaxD);
-		global::Gtk.Table.TableChild w32 = ((global::Gtk.Table.TableChild)(this.table4[this.ProcMaxD]));
-		w32.TopAttach = ((uint)(3));
-		w32.BottomAttach = ((uint)(4));
-		w32.LeftAttach = ((uint)(3));
-		w32.RightAttach = ((uint)(4));
+		this.MinProcIntense = new global::Gtk.SpinButton(0D, 100D, 0.1D);
+		this.MinProcIntense.CanFocus = true;
+		this.MinProcIntense.Name = "MinProcIntense";
+		this.MinProcIntense.Adjustment.PageIncrement = 10D;
+		this.MinProcIntense.ClimbRate = 1D;
+		this.MinProcIntense.Digits = ((uint)(3));
+		this.MinProcIntense.Numeric = true;
+		this.MinProcIntense.Value = 0.305D;
+		this.table4.Add(this.MinProcIntense);
+		global::Gtk.Table.TableChild w32 = ((global::Gtk.Table.TableChild)(this.table4[this.MinProcIntense]));
+		w32.TopAttach = ((uint)(1));
+		w32.BottomAttach = ((uint)(2));
+		w32.LeftAttach = ((uint)(1));
+		w32.RightAttach = ((uint)(2));
 		w32.XOptions = ((global::Gtk.AttachOptions)(4));
 		w32.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table4.Gtk.Table+TableChild
-		this.ProcMaxM = new global::Gtk.SpinButton(0D, 100D, 0.1D);
-		this.ProcMaxM.CanFocus = true;
-		this.ProcMaxM.Name = "ProcMaxM";
-		this.ProcMaxM.Adjustment.PageIncrement = 10D;
-		this.ProcMaxM.ClimbRate = 1D;
-		this.ProcMaxM.Digits = ((uint)(3));
-		this.ProcMaxM.Numeric = true;
-		this.ProcMaxM.Value = 1.5D;
-		this.table4.Add(this.ProcMaxM);
-		global::Gtk.Table.TableChild w33 = ((global::Gtk.Table.TableChild)(this.table4[this.ProcMaxM]));
+		this.MinProcSigma = new global::Gtk.SpinButton(0D, 100D, 0.1D);
+		this.MinProcSigma.CanFocus = true;
+		this.MinProcSigma.Name = "MinProcSigma";
+		this.MinProcSigma.Adjustment.PageIncrement = 10D;
+		this.MinProcSigma.ClimbRate = 1D;
+		this.MinProcSigma.Digits = ((uint)(3));
+		this.MinProcSigma.Numeric = true;
+		this.MinProcSigma.Value = 0.3D;
+		this.table4.Add(this.MinProcSigma);
+		global::Gtk.Table.TableChild w33 = ((global::Gtk.Table.TableChild)(this.table4[this.MinProcSigma]));
 		w33.TopAttach = ((uint)(2));
 		w33.BottomAttach = ((uint)(3));
-		w33.LeftAttach = ((uint)(3));
-		w33.RightAttach = ((uint)(4));
+		w33.LeftAttach = ((uint)(1));
+		w33.RightAttach = ((uint)(2));
 		w33.XOptions = ((global::Gtk.AttachOptions)(4));
 		w33.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table4.Gtk.Table+TableChild
-		this.ProcMinD = new global::Gtk.SpinButton(0D, 100D, 0.1D);
-		this.ProcMinD.CanFocus = true;
-		this.ProcMinD.Name = "ProcMinD";
-		this.ProcMinD.Adjustment.PageIncrement = 10D;
-		this.ProcMinD.ClimbRate = 1D;
-		this.ProcMinD.Digits = ((uint)(3));
-		this.ProcMinD.Numeric = true;
-		this.ProcMinD.Value = 0.5D;
-		this.table4.Add(this.ProcMinD);
-		global::Gtk.Table.TableChild w34 = ((global::Gtk.Table.TableChild)(this.table4[this.ProcMinD]));
-		w34.TopAttach = ((uint)(3));
-		w34.BottomAttach = ((uint)(4));
-		w34.LeftAttach = ((uint)(1));
-		w34.RightAttach = ((uint)(2));
-		w34.XOptions = ((global::Gtk.AttachOptions)(4));
-		w34.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table4.Gtk.Table+TableChild
-		this.ProcMinM = new global::Gtk.SpinButton(0D, 100D, 0.1D);
-		this.ProcMinM.CanFocus = true;
-		this.ProcMinM.Name = "ProcMinM";
-		this.ProcMinM.Adjustment.PageIncrement = 10D;
-		this.ProcMinM.ClimbRate = 1D;
-		this.ProcMinM.Digits = ((uint)(3));
-		this.ProcMinM.Numeric = true;
-		this.ProcMinM.Value = 0.9D;
-		this.table4.Add(this.ProcMinM);
-		global::Gtk.Table.TableChild w35 = ((global::Gtk.Table.TableChild)(this.table4[this.ProcMinM]));
-		w35.TopAttach = ((uint)(2));
-		w35.BottomAttach = ((uint)(3));
-		w35.LeftAttach = ((uint)(1));
-		w35.RightAttach = ((uint)(2));
-		w35.XOptions = ((global::Gtk.AttachOptions)(4));
-		w35.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table4.Gtk.Table+TableChild
-		this.SecondGenMaxIntense = new global::Gtk.SpinButton(0D, 100D, 0.1D);
-		this.SecondGenMaxIntense.CanFocus = true;
-		this.SecondGenMaxIntense.Name = "SecondGenMaxIntense";
-		this.SecondGenMaxIntense.Adjustment.PageIncrement = 10D;
-		this.SecondGenMaxIntense.ClimbRate = 1D;
-		this.SecondGenMaxIntense.Digits = ((uint)(3));
-		this.SecondGenMaxIntense.Numeric = true;
-		this.table4.Add(this.SecondGenMaxIntense);
-		global::Gtk.Table.TableChild w36 = ((global::Gtk.Table.TableChild)(this.table4[this.SecondGenMaxIntense]));
-		w36.TopAttach = ((uint)(1));
-		w36.BottomAttach = ((uint)(2));
-		w36.LeftAttach = ((uint)(3));
-		w36.RightAttach = ((uint)(4));
-		w36.XOptions = ((global::Gtk.AttachOptions)(4));
-		w36.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table4.Gtk.Table+TableChild
-		this.SecondGenMinIntense = new global::Gtk.SpinButton(0D, 100D, 0.1D);
-		this.SecondGenMinIntense.CanFocus = true;
-		this.SecondGenMinIntense.Name = "SecondGenMinIntense";
-		this.SecondGenMinIntense.Adjustment.PageIncrement = 10D;
-		this.SecondGenMinIntense.ClimbRate = 1D;
-		this.SecondGenMinIntense.Digits = ((uint)(3));
-		this.SecondGenMinIntense.Numeric = true;
-		this.table4.Add(this.SecondGenMinIntense);
-		global::Gtk.Table.TableChild w37 = ((global::Gtk.Table.TableChild)(this.table4[this.SecondGenMinIntense]));
-		w37.TopAttach = ((uint)(1));
-		w37.BottomAttach = ((uint)(2));
-		w37.LeftAttach = ((uint)(1));
-		w37.RightAttach = ((uint)(2));
-		w37.XOptions = ((global::Gtk.AttachOptions)(4));
-		w37.YOptions = ((global::Gtk.AttachOptions)(4));
 		this.vbox6.Add(this.table4);
-		global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.table4]));
-		w38.Position = 1;
-		w38.Expand = false;
-		w38.Fill = false;
+		global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.table4]));
+		w34.Position = 1;
+		w34.Expand = false;
+		w34.Fill = false;
 		this.vbox2.Add(this.vbox6);
-		global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.vbox6]));
-		w39.Position = 1;
-		w39.Expand = false;
-		w39.Fill = false;
+		global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.vbox6]));
+		w35.Position = 1;
+		w35.Expand = false;
+		w35.Fill = false;
 		this.vbox1.Add(this.vbox2);
-		global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox2]));
-		w40.Position = 0;
-		w40.Expand = false;
-		w40.Fill = false;
+		global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox2]));
+		w36.Position = 0;
+		w36.Expand = false;
+		w36.Fill = false;
 		// Container child vbox1.Gtk.Box+BoxChild
 		this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
 		this.GtkScrolledWindow.Name = "GtkScrolledWindow";
@@ -586,8 +524,8 @@ public partial class MainWindow
 		this.ResTextView.RightMargin = 10;
 		this.GtkScrolledWindow.Add(this.ResTextView);
 		this.vbox1.Add(this.GtkScrolledWindow);
-		global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.GtkScrolledWindow]));
-		w42.Position = 1;
+		global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.GtkScrolledWindow]));
+		w38.Position = 1;
 		this.Add(this.vbox1);
 		if ((this.Child != null))
 		{

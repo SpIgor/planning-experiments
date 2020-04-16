@@ -8,6 +8,6 @@
     <Compile Remove="Class1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SMOElementsLibrary\SMOElementsLibrary.csproj" />
+    <ProjectReference Include="..\TimeElementsLibrary\TimeElementsLibrary.csproj" />
   </ItemGroup>
 </Project>
