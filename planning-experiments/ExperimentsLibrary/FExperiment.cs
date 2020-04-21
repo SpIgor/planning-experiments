@@ -5,230 +5,160 @@ using TimeElementsLibrary;
 
 namespace ExperimentsLibrary
 {
-    //public class FExperiment
-    //{
-    //    int coeffAmount;
-    //    int N;
-    //    int[,] matrix =
-    //    {
-    //        {1,-1,-1,-1, 1, 1, 1,-1},
-    //        {1, 1,-1,-1,-1,-1, 1, 1},
-    //        {1,-1, 1,-1,-1, 1, 1, 1},
-    //        {1, 1, 1,-1, 1,-1, 1,-1},
-    //        {1,-1,-1, 1, 1,-1,-1, 1},
-    //        {1, 1,-1, 1,-1, 1,-1,-1},
-    //        {1,-1, 1, 1,-1,-1,-1,-1},
-    //        {1, 1, 1, 1, 1, 1,-1, 1},
-    //    };
-
-    //    double[] genIntense = new double[2];
-    //    double[] procM = new double[2];
-    //    double[] procD = new double[2];
-
-    //    double expGenIntense;
-    //    double expProcM;
-    //    double expProcD;
-
-    //    public double[] ExperimentResults { get; set; } = new double[8];
-    //    double[] coeffs = new double[8];
-    //    double[] x = new double[3];
-
-    //    double[] zCenterList = new double[3];
-    //    double[] zDeltaLIst = new double[3];
-
-    //    public FExperiment(double minGenIntense, double maxGenIntense, double minProcM, double maxProcM,
-    //        double minProcD, double maxProcD, double expGenIntense, double expProcM, double expProcD)
-    //    {
-    //        this.expGenIntense = expGenIntense;
-    //        this.expProcM = expProcM;
-    //        this.expProcD = expProcD;
-
-    //        genIntense[0] = minGenIntense; genIntense[1] = maxGenIntense;
-    //        procM[0] = minProcM; procM[1] = maxProcM;
-    //        procD[0] = minProcD; procD[1] = maxProcD;
-    //    }
-
-    //    public void GetModellingResults()
-    //    {
-    //        ExperimentResults[0] = PlotGenerator.GetAvgTime(genIntense[0], procM[0], procD[0]);
-    //        ExperimentResults[1] = PlotGenerator.GetAvgTime(genIntense[1], procM[0], procD[0]);
-    //        ExperimentResults[2] = PlotGenerator.GetAvgTime(genIntense[0], procM[1], procD[0]);
-    //        ExperimentResults[3] = PlotGenerator.GetAvgTime(genIntense[1], procM[1], procD[0]);
-    //        ExperimentResults[4] = PlotGenerator.GetAvgTime(genIntense[0], procM[0], procD[1]);
-    //        ExperimentResults[5] = PlotGenerator.GetAvgTime(genIntense[1], procM[0], procD[1]);
-    //        ExperimentResults[6] = PlotGenerator.GetAvgTime(genIntense[0], procM[1], procD[1]);
-    //        ExperimentResults[7] = PlotGenerator.GetAvgTime(genIntense[1], procM[1], procD[1]);
-    //    }
-
-    //    public double[] GetCoeffs()
-    //    {
-    //        for (int j = 0; j < 8; j++)
-    //        {
-    //            double sum = 0;
-    //            for (int i = 0; i < 8; i++)
-    //            {
-    //                sum += matrix[i, j] * ExperimentResults[i];
-    //            }
-    //            coeffs[j] = sum / 8;
-    //        }
-
-    //        return coeffs;
-    //    }
-
-    //    public double[] GetExperimentParams()
-    //    {
-    //        zCenterList[0] = (genIntense[1] + genIntense[0]) / 2;
-    //        zDeltaLIst[0] = (genIntense[1] - genIntense[0]) / 2;
-
-    //        zCenterList[1] = (procM[1] + procM[0]) / 2;
-    //        zDeltaLIst[1] = (procM[1] - procM[0]) / 2;
-
-    //        zCenterList[2] = (procD[1] + procD[0]) / 2;
-    //        zDeltaLIst[2] = (procD[1] - procD[0]) / 2;
-
-    //        x[0] = (expGenIntense - zCenterList[0]) / zDeltaLIst[0];
-    //        x[1] = (expProcM - zCenterList[1]) / zDeltaLIst[1];
-    //        x[2] = (expProcD - zCenterList[2]) / zDeltaLIst[2];
-
-    //        return x;
-    //    }
-
-    //    public double LinExperiment()
-    //    {
-    //        return coeffs[0] + (x[0] * coeffs[1]) + (x[1] * coeffs[2]) + (x[2] * coeffs[3]);
-    //    }
-
-    //    public double NonLinExperiment()
-    //    {
-    //        return coeffs[0] + x[0] * coeffs[1] + x[1] * coeffs[2] + x[2] * coeffs[3]
-    //            + x[0] * x[1] * coeffs[4] + x[0] * x[2] * coeffs[5] + x[1] * x[2] * coeffs[6]
-    //            + x[0] * x[1] * x[2] * coeffs[7];
-    //    }
-    //}
-
     public class FIntenseExperiment
     {
-        int paramsAmount = 3;
-        int coeffsAmount = 8;
+        int paramsAmount = 4;
+        int coeffsAmount = 16;
 
         int[,] matrix =
         {
-            {1,-1,-1,-1, 1, 1, 1,-1},
-            {1,-1,-1, 1, 1,-1,-1, 1},
-            {1,-1, 1,-1,-1, 1,-1, 1},
-            {1,-1, 1, 1,-1,-1, 1,-1},
-            {1, 1,-1,-1,-1,-1, 1, 1},
-            {1, 1,-1, 1,-1, 1,-1,-1},
-            {1, 1, 1,-1, 1,-1,-1,-1},
-            {1, 1, 1, 1, 1, 1, 1, 1},
+            {1,-1,-1,-1,-1,1, 1, 1, 1, 1, 1, -1,-1,-1,-1,1},
+            {1,-1,-1,-1,1, 1, 1, -1,1, -1,-1,-1,1, 1, 1, -1},
+            {1,-1,-1,1, -1,1, -1,1, -1,1, -1,1, -1,1, 1, -1},
+            {1,-1,-1,1, 1, 1, -1,-1,-1,-1,1, 1, 1, -1,-1,1},
+            {1,-1,1, -1,-1,-1,1, 1, -1,-1,1, 1, 1, -1,1, -1},
+            {1,-1,1, -1,1, -1,1, -1,-1,1, -1,1, -1,1, -1,1},
+            {1,-1,1, 1, -1,-1,-1,1, 1, -1,-1,-1,1, 1, -1,1},
+            {1,-1,1, 1, 1, -1,-1,-1,1, 1, 1, -1,-1,-1,1, -1},
+            {1,1, -1,-1,-1,-1,-1,-1,1, 1, 1, 1, 1, 1, -1,-1},
+            {1,1, -1,-1,1, -1,-1,1, 1, -1,-1,1, -1,-1,1, 1},
+            {1,1, -1,1, -1,-1,1, -1,-1,1, -1,-1,1, -1,1, 1},
+            {1,1, -1,1, 1, -1,1, 1, -1,-1,1, -1,-1,1, -1,-1},
+            {1,1, 1, -1,-1,1, -1,-1,-1,-1,1, -1,-1,1, 1, 1},
+            {1,1, 1, -1,1, 1, -1,1, -1,1, -1,-1,1, -1,-1,-1},
+            {1,1, 1, 1, -1,1, 1, -1,1, -1,-1,1, -1,-1,-1,-1},
+            {1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         };
 
-        double[] genInterval;
-        double[] procInterval;
-        double[] procSigmaInterval;
+        public double FirstGenMinIntense { get; }
+        public double FirstGenMaxIntense { get; }
+        public double SecondGenMinIntense { get; }
+        public double SecondGenMaxIntense { get; }
+        public double ProcMinIntense { get; }
+        public double ProcMaxIntense { get; }
+        public double ProcMinD { get; }
+        public double ProcMaxD { get; }
+        public double FristGenIntense { get; }
+        public double SecondGenIntense { get; }
+        public double ProcIntense { get; }
+        public double ProcD { get; }
+        public double[] Results { get => results; set => results = value; }
+        public double[] Coeffs { get => coeffs; set => coeffs = value; }
+        public double[] ZCenterList { get => zCenterList; set => zCenterList = value; }
+        public double[] ZDeltaList { get => zDeltaList; set => zDeltaList = value; }
+        public double[] X { get => x; set => x = value; }
+        public double LinExpRes { get => linExpRes; set => linExpRes = value; }
+        public double NonLinExpRes { get => nonLinExpRes; set => nonLinExpRes = value; }
 
-        double genIntense;
-        double procIntense;
-        double procSigma;
-
-        public double[] ExperimentResults { get; set; }
         double[] coeffs;
+        double[] results;
+        double[] zCenterList;
+        double[] zDeltaList;
         double[] x;
 
-        double[] zCenterList;
-        double[] zDeltaLIst;
+        double linExpRes = 0;
+        double nonLinExpRes = 0;
 
-        public FIntenseExperiment(double minGenIntense, double maxGenIntense, double minProcIntense, double maxProcIntense,
-            double minProcSigma, double maxProcSigma, double genIntense, double procIntense, double procSigma)
+        public FIntenseExperiment(double firstGenMinIntense, double firstGenMaxIntense,
+                                  double secondGenMinIntense, double secondGenMaxIntense,
+                                  double procMinIntense, double procMaxIntense,
+                                  double procMinD, double procMaxD,
+                                  double fristGenIntense, double secondGenIntense, double procIntense, double procD)
         {
-            genInterval = new double[2];
-            procInterval = new double[2];
-            procSigmaInterval = new double[2];
+            FirstGenMinIntense = firstGenMinIntense;
+            FirstGenMaxIntense = firstGenMaxIntense;
+            SecondGenMinIntense = secondGenMinIntense;
+            SecondGenMaxIntense = secondGenMaxIntense;
+            ProcMinIntense = procMinIntense;
+            ProcMaxIntense = procMaxIntense;
+            ProcMinD = procMinD;
+            ProcMaxD = procMaxD;
+            FristGenIntense = fristGenIntense;
+            SecondGenIntense = secondGenIntense;
+            ProcIntense = procIntense;
+            ProcD = procD;
 
-            ExperimentResults = new double[coeffsAmount];
-            coeffs = new double[coeffsAmount];
-
-            zDeltaLIst = new double[paramsAmount];
-            zCenterList = new double[paramsAmount];
-
-            x = new double[paramsAmount];
-            coeffs = new double[coeffsAmount];
-
-            genInterval[0] = minGenIntense; genInterval[1] = maxGenIntense;
-            procInterval[0] = minProcIntense; procInterval[1] = maxProcIntense;
-            procSigmaInterval[0] = minProcSigma; procSigmaInterval[1] = maxProcSigma;
-
-            this.genIntense = genIntense;
-            this.procIntense = procIntense;
-            this.procSigma = procSigma;
+            Coeffs = new double[coeffsAmount];
+            Results = new double[coeffsAmount];
+            ZCenterList = new double[paramsAmount];
+            ZDeltaList = new double[paramsAmount];
+            X = new double[paramsAmount];
         }
 
-        public List<string> GetModellingResults()
+        public void GetModellingResults()
         {
-            List<string> results = new List<string>();
-            ExperimentResults[0] = PlotGenerator.IntenseExperiment(genInterval[0], procInterval[0], procSigmaInterval[0], out string res);
-            results.Add(res);
-            ExperimentResults[1] = PlotGenerator.IntenseExperiment(genInterval[0], procInterval[0], procSigmaInterval[1], out res);
-            results.Add(res);
-            ExperimentResults[2] = PlotGenerator.IntenseExperiment(genInterval[0], procInterval[1], procSigmaInterval[0], out res);
-            results.Add(res);
-            ExperimentResults[3] = PlotGenerator.IntenseExperiment(genInterval[0], procInterval[1], procSigmaInterval[1], out res);
-            results.Add(res);
-            ExperimentResults[4] = PlotGenerator.IntenseExperiment(genInterval[1], procInterval[0], procSigmaInterval[0], out res);
-            results.Add(res);
-            ExperimentResults[5] = PlotGenerator.IntenseExperiment(genInterval[1], procInterval[0], procSigmaInterval[1], out res);
-            results.Add(res);
-            ExperimentResults[6] = PlotGenerator.IntenseExperiment(genInterval[1], procInterval[1], procSigmaInterval[0], out res);
-            results.Add(res);
-            ExperimentResults[7] = PlotGenerator.IntenseExperiment(genInterval[1], procInterval[1], procSigmaInterval[1], out res);
-            results.Add(res);
+            for (int i = 0; i < coeffsAmount; i++)
+            {
+                double firstGenExpIntense, secondGenExpIntense, procExpIntense, procExpD;
 
-            return results;
+                if (matrix[i, 1] == -1)
+                    firstGenExpIntense = FirstGenMinIntense;
+                else
+                    firstGenExpIntense = FirstGenMaxIntense;
+
+                if (matrix[i, 2] == -1)
+                    secondGenExpIntense = SecondGenMinIntense;
+                else
+                    secondGenExpIntense = SecondGenMaxIntense;
+
+                if (matrix[i, 3] == -1)
+                    procExpIntense = ProcMinIntense;
+                else
+                    procExpIntense = ProcMaxIntense;
+
+                if (matrix[i, 4] == -1)
+                    procExpD = ProcMinD;
+                else
+                    procExpD = ProcMaxD;
+
+                Results[i] = PlotGenerator.GetExperimentResult(firstGenExpIntense, secondGenExpIntense, procExpIntense, procExpD);
+            }
         }
 
-        public double[] GetCoeffs()
+        public void GetCoeffs()
         {
             for (int j = 0; j < coeffsAmount; j++)
             {
                 double sum = 0;
                 for (int i = 0; i < coeffsAmount; i++)
                 {
-                    sum += matrix[i, j] * ExperimentResults[i];
+                    sum += matrix[i, j] * results[i];
                 }
                 coeffs[j] = sum / coeffsAmount;
             }
-
-            return coeffs;
         }
 
-        public double[] GetExperimentParams()
+        public void GetZLists()
         {
-            zCenterList[0] = (genInterval[1] + genInterval[0]) / 2;
-            zDeltaLIst[0] = (genInterval[1] - genInterval[0]) / 2;
+            ZCenterList[0] = (FirstGenMaxIntense + FirstGenMinIntense) / 2;
+            ZDeltaList[0] = (FirstGenMaxIntense - FirstGenMinIntense) / 2;
 
-            zCenterList[1] = (procInterval[1] + procInterval[0]) / 2;
-            zDeltaLIst[1] = (procInterval[1] - procInterval[0]) / 2;
+            ZCenterList[1] = (SecondGenMaxIntense + SecondGenMinIntense) / 2;
+            ZDeltaList[1] = (SecondGenMaxIntense - SecondGenMinIntense) / 2;
 
-            zCenterList[2] = (procSigmaInterval[1] + procSigmaInterval[0]) / 2;
-            zDeltaLIst[2] = (procSigmaInterval[1] - procSigmaInterval[0]) / 2;
+            ZCenterList[2] = (ProcMaxIntense + ProcMinIntense) / 2;
+            ZDeltaList[2] = (ProcMaxIntense - ProcMinIntense) / 2;
 
-            x[0] = (genIntense - zCenterList[0]) / zDeltaLIst[0];
-            x[1] = (procIntense - zCenterList[1]) / zDeltaLIst[1];
-            x[2] = (procSigma - zCenterList[2]) / zDeltaLIst[2];
+            ZCenterList[3] = (ProcMaxD + ProcMinD) / 2;
+            ZDeltaList[3] = (ProcMaxD - ProcMinD) / 2;
 
-            return x;
+            X[0] = (FristGenIntense - ZCenterList[0]) / ZDeltaList[0];
+            X[1] = (SecondGenIntense - ZCenterList[1]) / ZDeltaList[1];
+            X[2] = (ProcIntense - ZCenterList[2]) / ZDeltaList[2];
+            X[3] = (ProcD - ZCenterList[3]) / ZDeltaList[3];
         }
 
-        public double LinExperiment()
+        public void LinExperiment()
         {
-            return 1 * coeffs[0] + (x[0] * coeffs[1]) + (x[1] * coeffs[2]) + (x[2] * coeffs[3]);
+            LinExpRes = coeffs[0] + coeffs[1] * x[0] + coeffs[2] * x[1] + coeffs[3] * x[2] + coeffs[4] * x[3];
         }
 
-        public double NonLinExperiment()
+        public void NonLinExperiment()
         {
-            return 1 * coeffs[0] + (x[0] * coeffs[1]) + (x[1] * coeffs[2]) + (x[2] * coeffs[3]) +
-                (x[0] * x[1] * coeffs[4]) + (x[0] * x[2] * coeffs[5]) + (x[1] * x[2] * coeffs[6]) +
-                (x[0] * x[1] * x[2] * coeffs[7]);
+            NonLinExpRes = coeffs[0] + coeffs[1] * x[0] + coeffs[2] * x[1] + coeffs[3] * x[2] + coeffs[4] * x[3]
+                + coeffs[5] * x[0] * x[1] + coeffs[6] * x[0] * x[2] + coeffs[7] * x[0] * x[3] + coeffs[8] * x[1] * x[2] + coeffs[9] * x[1] * x[3] + coeffs[10] * x[2] * x[3]
+                + coeffs[11] * x[0] * x[1] * x[2] + coeffs[12] * x[0] * x[1] * x[3] + coeffs[13] * x[0] * x[2] * x[3] + coeffs[14] * x[1] * x[2] * x[3]
+                + coeffs[15] * x[0] * x[1] * x[2] * x[3];
         }
     }
 }

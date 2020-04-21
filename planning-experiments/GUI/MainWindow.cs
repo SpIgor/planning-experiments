@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Gtk;
-//using SMOElementsLibrary;
 using ExperimentsLibrary;
 using TimeElementsLibrary;
 
@@ -21,109 +20,83 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnStartModellingBtnClicked(object sender, EventArgs e)
     {
-        //bool ifGenIntense = GenIntenseRBtn.Active;
-        //double genIntense = GenIntenseSBtn.Value;
-        //double genSigma = GenSigmaSBtn.Value;
+        double firstGenIntense = FirstGenIntense.Value;
+        double secondGenIntense = SecondGenIntense.Value;
+        double procIntenese = ProcIntense.Value;
+        double procD = ProcD.Value;
 
-        //bool ifProcIntense = false;
-        //double procM = ProcMSBtn.Value;
-        //double procSigma = ProcDSBtn.Value;
-        //double procIntense = 0;
+        ModellingController controller = new ModellingController(firstGenIntense, secondGenIntense, procIntenese, procD);
 
-        //double modellingTime = ModellingTimeSBtn.Value;
+        Report report = controller.StartModelling();
 
-        //ModellingController controller = new ModellingController(ifGenIntense, genSigma, genIntense,
-        //    ifProcIntense, procM, procSigma, procIntense, modellingTime);
-        //Report report = controller.StartModelling();
-
-        //StringBuilder stringBuilder = new StringBuilder();
-        //stringBuilder.Append(report.ToString());
-
-        //stringBuilder.Append(PlotGenerator.GetAvgTime(genIntense, procM, procSigma));
-
-        //ResTextView.Buffer.Clear();
-        //ResTextView.Buffer.Text = stringBuilder.ToString();
+        ResTextView.Buffer.Clear();
+        ResTextView.Buffer.Text = report.ToString();
     }
 
     protected void OnStartExperimentClicked(object sender, EventArgs e)
     {
+        double firstGenIntense = FirstGenIntense.Value;
+        double secondGenIntense = SecondGenIntense.Value;
+        double procIntenese = ProcIntense.Value;
+        double procD = ProcD.Value;
+
+        double firstGenMinIntense = FirstGenMinIntense.Value; double firstGenMaxIntense = FirstGenMaxIntense.Value;
+        double secondGenMinIntense = SecondGenMinIntense.Value; double secondGenMaxIntense = SecondGenMaxIntense.Value;
+        double procMinIntense = ProcMinIntense.Value; double procMaxIntense = ProcMaxIntense.Value;
+        double procMinD = ProcMinD.Value; double procMaxD = ProcMaxD.Value;
+
+        FIntenseExperiment experiment = new FIntenseExperiment(firstGenMinIntense, firstGenMaxIntense,
+                                                               secondGenMinIntense, secondGenMaxIntense,
+                                                               procMinIntense, procMaxIntense,
+                                                               procMinD, procMaxD,
+                                                               firstGenIntense, secondGenIntense, procIntenese, procD);
+
         StringBuilder builder = new StringBuilder();
 
-        double minGenIntense = MinGenIntense.Value; double maxGenIntense = MaxGenIntense.Value;
-        double minProcIntense = MinProcIntense.Value; double maxProcIntense = MaxProcIntense.Value;
-        double minProcSigma = MinProcSigma.Value; double maxProcSigma = MaxProcSigma.Value;
+        experiment.GetModellingResults();
+        experiment.GetCoeffs();
+        experiment.GetZLists();
+        experiment.LinExperiment();
+        experiment.NonLinExperiment();
 
-        double genIntense = GenIntense.Value;
-        double procIntense = ProcIntense.Value;
-        double procSigma = ProcSigma.Value;
-
-        FIntenseExperiment experiment =
-            new FIntenseExperiment(minGenIntense, maxGenIntense, minProcIntense, maxProcIntense, minProcSigma, maxProcSigma,
-            genIntense, procIntense, procSigma);
-
-        List<string> results = experiment.GetModellingResults();
-
-        builder.Append("Проведенные эксперименты для заполнения матрицы\n\n");
-        for (int i = 0; i < results.Count; i++)
-        {
-            builder.Append(results[i]);
-        }
-
-        builder.Append("\n");
-
-        double[] coeffs = experiment.GetCoeffs();
-
-        //for (int i = 0; i < coeffs.Length; i++)
-        //{
-        //    builder.Append($"{coeffs[i]:F2}\n");
-        //}
-
-        experiment.GetExperimentParams();
-
-        double exp = PlotGenerator.IntenseExperiment(genIntense, procIntense, procSigma, out string s);
-        double linExp = experiment.LinExperiment();
-        double nonLinExp = experiment.NonLinExperiment();
-
-        //double[] loads = new double[4];
-        //loads[0] = minGenIntense / minProcIntense;
-        //loads[1] = minGenIntense / maxProcIntense;
-        //loads[2] = maxGenIntense / minProcIntense;
-        //loads[3] = maxGenIntense / maxProcIntense;
-
-        //Array.Sort(loads);
-        //builder.Append($"Загрузка системы лежит в интервале [{loads[0]:F2}, {loads[3]:F2}]\n\n");
-
-        builder.Append($"Коэффициенты линейного плана:\n");
+        builder.Append("ПФЭ\n");
+        builder.Append("Линейный план\n");
         for (int i = 0; i < 4; i++)
         {
-            builder.Append($"b{i} = {coeffs[i]:F2}\n");
+            builder.Append($"b{i} = {experiment.Coeffs[i]:F2}  ");
         }
-
-        builder.Append("\n\n");
-        builder.Append($"Коэффициенты частично нелинейного плана:\n");
-        for (int i = 0; i < 4; i++)
+        builder.Append("\nЧастично нелинейный план\n");
+        for (int i = 0; i < 16; i++)
         {
-            builder.Append($"b{i} = {coeffs[i]:F2}\n");
+            builder.Append($"b{i} = {experiment.Coeffs[i]:F2}  ");
         }
-        builder.Append($"b12 = {coeffs[4]:F2}\n");
-        builder.Append($"b13 = {coeffs[5]:F2}\n");
-        builder.Append($"b23 = {coeffs[6]:F2}\n");
-        builder.Append($"b123 = {coeffs[7]:F2}\n");
 
+        double res = ExperimentsLibrary.PlotGenerator.GetExperimentResult(firstGenIntense, secondGenIntense, procIntenese, procD);
+        double deltaLin = Math.Abs(res - experiment.LinExpRes) / res * 100;
+        double deltaNonLin = Math.Abs(res - experiment.NonLinExpRes) / res * 100;
 
-        builder.Append("\n\n");
-        builder.Append($"Среднее время ожидания заявки в очереди {exp:F4}\n");
-        builder.Append($"Результат линейного плана {linExp:F4}\n");
-        builder.Append($"Результаты частично нелинейного плана {nonLinExp:F4}\n");
+        while (deltaLin > deltaNonLin)
+        {
+            res = ExperimentsLibrary.PlotGenerator.GetExperimentResult(firstGenIntense, secondGenIntense, procIntenese, procD);
+            deltaLin = Math.Abs(res - experiment.LinExpRes) / res * 100;
+            deltaNonLin = Math.Abs(res - experiment.NonLinExpRes) / res * 100;
+        }
 
-        double linDelta = Math.Abs(exp - linExp) / exp * 100;
-        double nonLinDelta = Math.Abs(exp - nonLinExp) / exp * 100;
+        builder.Append("\n\nСравнение результатов\n");
+        builder.Append($"Результат моделирования {res:F4}\n");
+        builder.Append($"Результат линейной модели {experiment.LinExpRes:F4}\n");
+        builder.Append($"Результат частично нелинейной модели {experiment.NonLinExpRes:F4}\n");
 
-        builder.Append("\n\n");
-        builder.Append($"Отклонение линейного плана = {linDelta:F2}%\n");
-        builder.Append($"Отклонение частично нелинейного плана = {nonLinDelta:F2}%\n");
+        builder.Append($"\nОтелонение линейной модели {deltaLin:F2}%\n");
+        builder.Append($"Отелонение частично нелинейной модели {deltaNonLin:F2}%\n");
 
         ResTextView.Buffer.Clear();
         ResTextView.Buffer.Text = builder.ToString();
+    }
+
+    protected void OnPlotGeneratorClicked(object sender, EventArgs e)
+    {
+        ResTextView.Buffer.Clear();
+        ResTextView.Buffer.Text = ExperimentsLibrary.PlotGenerator.GetPlotPoints();
     }
 }

@@ -3,16 +3,18 @@ namespace TimeElementsLibrary
 {
     public class Report
     {
-        public Report(Generator generator, Processor processor, Queue queue)
+        public Generator FirstGenerator { get; }
+        public Generator SecondGenerator { get; }
+        public Processor Processor { get; }
+        public Queue Queue { get; }
+
+        public Report(Generator firstGenerator, Generator secondGenerator, Processor processor, Queue queue)
         {
-            Generator = generator;
+            FirstGenerator = firstGenerator;
+            SecondGenerator = secondGenerator;
             Processor = processor;
             Queue = queue;
         }
-
-        public Generator Generator { get; }
-        public Processor Processor { get; }
-        public Queue Queue { get; }
 
         public double GetAvgTime()
         {
@@ -23,19 +25,24 @@ namespace TimeElementsLibrary
             {
                 sum += Queue.OutTime[i] - Queue.InTime[i];
             }
-            sum /= Queue.InTime.Count;
+            sum /= length;
 
-            return sum * 100;
+            return sum;
         }
 
         public double Load()
         {
-            return GenIntense() / ProcIntense();
+            return (FirstGeneratorIntense() + SecondGeneratorIntense()) / ProcIntense();
         }
 
-        public double GenIntense()
+        public double FirstGeneratorIntense()
         {
-            return Generator.GeneratedRequests / Generator.CurrentTime;
+            return FirstGenerator.GeneratedRequests / FirstGenerator.CurrentTime;
+        }
+
+        public double SecondGeneratorIntense()
+        {
+            return SecondGenerator.GeneratedRequests / SecondGenerator.CurrentTime;
         }
 
         public double ProcIntense()
@@ -45,9 +52,14 @@ namespace TimeElementsLibrary
 
         public override string ToString()
         {
-            string res = $"Сгенерировано заявок {Generator.GeneratedRequests} за {Generator.CurrentTime:F2}\n" +
+            string res =
+                $"Сгенерировано заявок:\n" +
+                    $"\tПервым генератором {FirstGenerator.GeneratedRequests} за {FirstGenerator.CurrentTime:F2}\n" +
+                    $"\tВторым генератором {SecondGenerator.GeneratedRequests} за {SecondGenerator.CurrentTime:F2}\n" +
                 $"Обработано заявок {Processor.ProcessedRequests} за {Processor.CurrentTime:F2}\n\n" +
-                $"Интенсивность генератора {GenIntense():F2}\n" +
+                $"Интенсивности генераторов:\n" +
+                    $"\tПервого {FirstGeneratorIntense():F2}\n" +
+                    $"\tВторого {SecondGeneratorIntense():F2}\n" +
                 $"Интенсивность ОА {ProcIntense():F2}\n" +
                 $"Полученная загрузка системы {Load():F2}\n\n" +
                 $"Среднее время ожидания заявки {GetAvgTime():F2}\n\n\n";

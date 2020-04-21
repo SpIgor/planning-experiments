@@ -3,26 +3,24 @@ namespace TimeElementsLibrary
 {
     public class ModellingController
     {
-        Generator generator;
+        Generator firstGenerator, secondGenerator;
         Processor processor;
         Queue queue = new Queue();
         double modellingTime;
         double timeStep = 0.001;
 
-        public ModellingController(bool ifGenIntense, double genSigma, double genIntense,
-                                   bool ifProcIntense, double procM, double procD, double procIntense, double modellingTime = 1000)
+        public ModellingController(double fistGenIntense, double secondGenIntense,
+                                   double procIntense, double procD,
+                                   double modellingTime = 1000)
         {
-            if (ifGenIntense)
-            {
-                genSigma = 1 / (Math.Sqrt(Math.PI / 2) * genIntense);
-            }
-            generator = new Generator(genSigma);
+            double firstGenSigma = 1 / (Math.Sqrt(Math.PI / 2) * fistGenIntense);
+            firstGenerator = new Generator(firstGenSigma);
 
-            if (ifProcIntense)
-            {
-                procM = 1 / procIntense;
-                procD = procM * procD;
-            }
+            double secondGenSigma = 1 / (Math.Sqrt(Math.PI / 2) * secondGenIntense);
+            secondGenerator = new Generator(secondGenSigma);
+
+            double procM = 1 / procIntense;
+            procD = procM * procD;
             processor = new Processor(procM, procD, queue);
             this.modellingTime = modellingTime;
         }
@@ -33,12 +31,19 @@ namespace TimeElementsLibrary
 
             while (currentTime < modellingTime)
             {
-                generator.Decrease(timeStep);
+                firstGenerator.Decrease(timeStep);
+                secondGenerator.Decrease(timeStep);
                 processor.Decrease(timeStep);
 
-                if (generator.Delay <= 0)
+                if (firstGenerator.Delay <= 0)
                 {
-                    generator.GenerateDelay();
+                    firstGenerator.GenerateDelay();
+                    queue.AddRequest(currentTime);
+                }
+
+                if (secondGenerator.Delay <= 0)
+                {
+                    secondGenerator.GenerateDelay();
                     queue.AddRequest(currentTime);
                 }
 
@@ -58,7 +63,7 @@ namespace TimeElementsLibrary
                 currentTime += timeStep;
             }
 
-            return new Report(generator, processor, queue);
+            return new Report(firstGenerator, secondGenerator, processor, queue);
         }
     }
 }
