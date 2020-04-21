@@ -225,7 +225,7 @@
                                 <property name="ClimbRate">1</property>
                                 <property name="Digits">3</property>
                                 <property name="Numeric">True</property>
-                                <property name="Value">0.306</property>
+                                <property name="Value">0.308</property>
                               </widget>
                               <packing>
                                 <property name="LeftAttach">1</property>
@@ -251,7 +251,7 @@
                                 <property name="ClimbRate">1</property>
                                 <property name="Digits">3</property>
                                 <property name="Numeric">True</property>
-                                <property name="Value">0.33</property>
+                                <property name="Value">0.314</property>
                               </widget>
                               <packing>
                                 <property name="TopAttach">1</property>
@@ -576,7 +576,7 @@
                         <property name="ClimbRate">1</property>
                         <property name="Digits">3</property>
                         <property name="Numeric">True</property>
-                        <property name="Value">0.35</property>
+                        <property name="Value">0.315</property>
                       </widget>
                       <packing>
                         <property name="TopAttach">2</property>

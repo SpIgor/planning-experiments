@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExperimentsLibrary", "ExperimentsLibrary\ExperimentsLibrary.csproj", "{515EC0EC-97C1-49A2-977C-32FB5EBA1556}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMOElementsLibrary", "SMOElementsLibrary\SMOElementsLibrary.csproj", "{B9B223F4-4854-482D-B9A4-3197927CAD95}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeElementsLibrary", "TimeElementsLibrary\TimeElementsLibrary.csproj", "{96EE3A21-4853-4259-BB1C-E9CA0647E2B3}"
 EndProject
 Global
@@ -23,10 +21,6 @@ Global
 		{515EC0EC-97C1-49A2-977C-32FB5EBA1556}.Debug|x86.Build.0 = Debug|Any CPU
 		{515EC0EC-97C1-49A2-977C-32FB5EBA1556}.Release|x86.ActiveCfg = Release|Any CPU
 		{515EC0EC-97C1-49A2-977C-32FB5EBA1556}.Release|x86.Build.0 = Release|Any CPU
-		{B9B223F4-4854-482D-B9A4-3197927CAD95}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B9B223F4-4854-482D-B9A4-3197927CAD95}.Debug|x86.Build.0 = Debug|Any CPU
-		{B9B223F4-4854-482D-B9A4-3197927CAD95}.Release|x86.ActiveCfg = Release|Any CPU
-		{B9B223F4-4854-482D-B9A4-3197927CAD95}.Release|x86.Build.0 = Release|Any CPU
 		{96EE3A21-4853-4259-BB1C-E9CA0647E2B3}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{96EE3A21-4853-4259-BB1C-E9CA0647E2B3}.Debug|x86.Build.0 = Debug|Any CPU
 		{96EE3A21-4853-4259-BB1C-E9CA0647E2B3}.Release|x86.ActiveCfg = Release|Any CPU

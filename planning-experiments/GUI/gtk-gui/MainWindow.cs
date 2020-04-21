@@ -223,7 +223,7 @@ public partial class MainWindow
 		this.ProcIntense.ClimbRate = 1D;
 		this.ProcIntense.Digits = ((uint)(3));
 		this.ProcIntense.Numeric = true;
-		this.ProcIntense.Value = 0.306D;
+		this.ProcIntense.Value = 0.308D;
 		this.table3.Add(this.ProcIntense);
 		global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.table3[this.ProcIntense]));
 		w10.LeftAttach = ((uint)(1));
@@ -238,7 +238,7 @@ public partial class MainWindow
 		this.ProcSigma.ClimbRate = 1D;
 		this.ProcSigma.Digits = ((uint)(3));
 		this.ProcSigma.Numeric = true;
-		this.ProcSigma.Value = 0.33D;
+		this.ProcSigma.Value = 0.314D;
 		this.table3.Add(this.ProcSigma);
 		global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.table3[this.ProcSigma]));
 		w11.TopAttach = ((uint)(1));
@@ -437,7 +437,7 @@ public partial class MainWindow
 		this.MaxProcSigma.ClimbRate = 1D;
 		this.MaxProcSigma.Digits = ((uint)(3));
 		this.MaxProcSigma.Numeric = true;
-		this.MaxProcSigma.Value = 0.35D;
+		this.MaxProcSigma.Value = 0.315D;
 		this.table4.Add(this.MaxProcSigma);
 		global::Gtk.Table.TableChild w30 = ((global::Gtk.Table.TableChild)(this.table4[this.MaxProcSigma]));
 		w30.TopAttach = ((uint)(2));

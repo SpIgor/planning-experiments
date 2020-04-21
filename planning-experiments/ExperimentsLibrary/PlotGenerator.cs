@@ -8,7 +8,7 @@ namespace ExperimentsLibrary
 {
     public static class PlotGenerator
     {
-        static double modellingTime = 3000;
+        static double modellingTime = 1000;
         static double load_step = 0.01;
         static double repeats = 30;
 
