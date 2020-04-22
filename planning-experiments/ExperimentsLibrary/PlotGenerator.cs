@@ -27,8 +27,8 @@ namespace ExperimentsLibrary
             avgLoad /= repeats;
             avgTime /= repeats;
 
-
-            //Console.WriteLine($"Ожидаемая загрузка {expectedLoad:F4}\nПолученная загрузка {avgLoad:F4}\nВремя ожидания {avgTime:F4}\n\n");
+            Console.WriteLine($"I1 = {firstGenIntense:F3}; I2 = {secondGenIntense:F3}; I3 = {procIntense:F3}; D = {procD:F3}");
+            Console.WriteLine($"Ожидаемая загрузка {(firstGenIntense + secondGenIntense) / procIntense:F4}\nПолученная загрузка {avgLoad:F4}\nВремя ожидания {avgTime:F4}\n\n");
             return avgTime;
         }
 

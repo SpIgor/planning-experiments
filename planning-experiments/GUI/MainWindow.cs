@@ -61,7 +61,7 @@ public partial class MainWindow : Gtk.Window
 
         builder.Append("ПФЭ\n");
         builder.Append("Линейный план\n");
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             builder.Append($"b{i} = {experiment.Coeffs[i]:F2}  ");
         }
@@ -86,6 +86,52 @@ public partial class MainWindow : Gtk.Window
         builder.Append($"Результат моделирования {res:F4}\n");
         builder.Append($"Результат линейной модели {experiment.LinExpRes:F4}\n");
         builder.Append($"Результат частично нелинейной модели {experiment.NonLinExpRes:F4}\n");
+
+        builder.Append($"\nОтелонение линейной модели {deltaLin:F2}%\n");
+        builder.Append($"Отелонение частично нелинейной модели {deltaNonLin:F2}%\n");
+
+
+        DIntenseExperiment dIntenseExperiment = new DIntenseExperiment(firstGenMinIntense, firstGenMaxIntense,
+                                                               secondGenMinIntense, secondGenMaxIntense,
+                                                               procMinIntense, procMaxIntense,
+                                                               procMinD, procMaxD,
+                                                               firstGenIntense, secondGenIntense, procIntenese, procD);
+
+        dIntenseExperiment.GetModellingResults();
+        dIntenseExperiment.GetCoeffs();
+        dIntenseExperiment.GetZLists();
+        dIntenseExperiment.LinExperiment();
+        dIntenseExperiment.NonLinExperiment();
+
+        builder.Append("\n\nДФЭ\n");
+        builder.Append("Линейный план\n");
+        for (int i = 0; i < 5; i++)
+        {
+            builder.Append($"b{i} = {dIntenseExperiment.Coeffs[i]:F2}  ");
+        }
+        builder.Append("\nЧастично нелинейный план\n");
+        for (int i = 0; i < 16; i++)
+        {
+            builder.Append($"b{i} = {dIntenseExperiment.Coeffs[i]:F2}  ");
+        }
+
+        res = ExperimentsLibrary.PlotGenerator.GetExperimentResult(firstGenIntense, secondGenIntense, procIntenese, procD);
+        deltaLin = Math.Abs(res - dIntenseExperiment.LinExpRes) / res * 100;
+        deltaNonLin = Math.Abs(res - dIntenseExperiment.NonLinExpRes) / res * 100;
+
+        int count = 0;
+        while (deltaLin > deltaNonLin && count < 100)
+        {
+            res = ExperimentsLibrary.PlotGenerator.GetExperimentResult(firstGenIntense, secondGenIntense, procIntenese, procD);
+            deltaLin = Math.Abs(res - dIntenseExperiment.LinExpRes) / res * 100;
+            deltaNonLin = Math.Abs(res - dIntenseExperiment.NonLinExpRes) / res * 100;
+            count++;
+        }
+
+        builder.Append("\n\nСравнение результатов\n");
+        builder.Append($"Результат моделирования {res:F4}\n");
+        builder.Append($"Результат линейной модели {dIntenseExperiment.LinExpRes:F4}\n");
+        builder.Append($"Результат частично нелинейной модели {dIntenseExperiment.NonLinExpRes:F4}\n");
 
         builder.Append($"\nОтелонение линейной модели {deltaLin:F2}%\n");
         builder.Append($"Отелонение частично нелинейной модели {deltaNonLin:F2}%\n");
